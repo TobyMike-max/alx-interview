@@ -35,26 +35,20 @@ def validUTF8(data):
 
     for i in data:
         binary = bin(i).replace('0b', '').rjust(8, '0')[-8:]
-        print(binary)
         if count == 0:
             if binary.startswith('110'):
                 count = 1
-                print(count)
             elif binary.startswith('1110'):
                 count = 2
-                print(count)
             elif binary.startswith('11110'):
                 count = 3
-                print(count)
             elif binary.startswith('10'):
                 return False
         else:
             if not binary.startswith('10'):
                 return False
             count -= 1
-            print(count)
     if count != 0:
-        print(count)
         return False
 
     return True
